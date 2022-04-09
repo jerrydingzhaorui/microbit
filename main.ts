@@ -1,22 +1,26 @@
 function start_game () {
     while (fei_x != sui_x && fei_y != y) {
         led.plot(fei_x, fei_y)
-        basic.pause(500)
+        basic.pause(200)
         sui_x = randint(0, 4)
         for (let index = 0; index < 5; index++) {
             led.plot(sui_x, y)
-            basic.pause(500)
+            basic.pause(200)
             led.unplot(sui_x, y)
             y += 1
             if (input.buttonIsPressed(Button.A)) {
-                led.unplot(fei_x, fei_y)
-                fei_x += -1
-                led.plot(fei_x, fei_y)
+                if (fei_x != 0) {
+                    led.unplot(fei_x, fei_y)
+                    fei_x += -1
+                    led.plot(fei_x, fei_y)
+                }
             }
             if (input.buttonIsPressed(Button.B)) {
-                led.unplot(fei_x, fei_y)
-                fei_x += 1
-                led.plot(fei_x, fei_y)
+                if (fei_x != 4) {
+                    led.unplot(fei_x, fei_y)
+                    fei_x += 1
+                    led.plot(fei_x, fei_y)
+                }
             }
         }
         y = 0
